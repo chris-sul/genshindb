@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+    command: python3 manage.py runserver 0.0.0.0:8080
+    volumes: 
+      - .:/var/www/webapps/requests
+    ports:
+      - "8080:8080"

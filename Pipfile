@@ -1,0 +1,13 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Django = "==3.1.4"
+"django-bootstrap4" = "*"
+"djangorestframework" = "*"
+"psycopg2-binary" = "==2.8.3"
+
+[requires]
+python_version = "3.6"
