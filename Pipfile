@@ -5,9 +5,8 @@ name = "pypi"
 
 [packages]
 Django = "==3.1.4"
-"django-bootstrap4" = "*"
 "djangorestframework" = "*"
-"psycopg2-binary" = "==2.8.3"
+"django-environ" = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"

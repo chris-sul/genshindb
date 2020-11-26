@@ -27,4 +27,4 @@ RUN pipenv install --deploy --system --dev
 ADD . ./
 
 # run entrypoint.sh
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+ENTRYPOINT ["/usr/src/app/entrypoint.prod.sh"]
