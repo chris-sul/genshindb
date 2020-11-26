@@ -24,7 +24,7 @@ ADD Pipfile Pipfile.lock ./
 
 RUN pipenv install --deploy --system --dev
 
-ADD . ./
+ADD . /usr/src/app
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.prod.sh"]
