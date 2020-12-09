@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block nav_index%}
+    active
+{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1>Welcome to GenshinDB</h1>
+    <p class="lead">Info on Genshin Impact characters, items, and more</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <a href="/characters">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Characters</h1>
+                        <p>Genshin Impact Characters</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm">
+            <a href="/">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Weapons</h1>
+                        <p>Genshin Impact Weapons</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-sm">
+            <a href="/">
+                <div class="card">
+                    <div class="card-body">
+                        <h1>Artifacts</h1>
+                        <p>Genshin Impact Artifacts</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+  </div>
+{% endblock %}

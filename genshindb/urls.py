@@ -16,12 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from genshindb import views
+
 from .characters.urls import urlpatterns as characters_urls
 
 admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('', views.index, name='index'),
 
     path('characters/', include(characters_urls)),
 ]
