@@ -12,47 +12,32 @@
     <div class="card-body">
         <h2 class="card-title">Characters</h2>
         <div class="row">
-            <div class="col-md-2 p-2">
-                <div class="row">
-                    <div class="col-12">
-                        <img class="mx-auto d-block" src="{% static 'img/amber.png' %}">
+            {% for character in characters %}
+                <div class="col-md-2 p-2">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-12">
+                                <img class="mx-auto d-block" src="{% static 'img/characters/'|add:character.name|add:'.png' %}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="sidebar-content">{{ character.tier }}<i class="fas fa-star"></i></div>
+                            </div>
+                            <div class="col-4">
+                                <div class="sidebar-content">
+                                    <img src="{% static 'img/elements/'|add:character.elemental_type|add:'.png' %}" width="25" height="25" title="{{ character.elemental_type }}">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="sidebar-content">
+                                    <img src="{% static 'img/weapons/'|add:character.weapon_type|add:'.png' %}" width="25" height="25" title="{{ character.weapon_type }}">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-4">
-                        <div class="sidebar-content">4<i class="fas fa-star"></i></div>
-                    </div>
-                    <div class="col-4">
-                        <div class="sidebar-content">Test</div>
-                    </div>
-                    <div class="col-4">
-                            <div class="sidebar-content">Test</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 p-2">
-                <img src="{% static 'img/amber.png' %}">
-            </div>
-            <div class="col-md-2 p-2">
-                <img src="{% static 'img/amber.png' %}">
-            </div>
-            <div class="col-md-2 p-2">
-                <img src="{% static 'img/amber.png' %}">
-            </div>
-            <div class="col-md-2 p-2">
-                <img src="{% static 'img/amber.png' %}">
-            </div>
-            <div class="col-md-2 p-2">
-                <img src="{% static 'img/amber.png' %}">
-            </div>
-            <div class="col-md-2 p-2">
-                <img src="{% static 'img/amber.png' %}">
-            </div>
-            <div class="col-md-2 p-2">
-                <img src="{% static 'img/amber.png' %}">
-            </div>
-
-            
+            {% endfor %}
         </div>
     </div>
     <div class="row">
