@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block nav_characters%}
+    active
+{% endblock %}
+
+{% block title %}{{ character }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">{{ character }}</h2>
+        <img src="{% static 'img/characters/'|add:character.name|add:'.png' %}">
+        {% if skilltalents %}
+        <h2>Skill Talents</h2>
+        <div class="row">
+           {% for talent in skilltalents %}
+           {% if talent.typename == 'Normal Attack' %}
+           <div class="col-md-2 p-2">
+                <div class="card">
+                    <h3>{{ talent.name }}</h3>
+                    <h4>Normal Attack</h4>
+                    <p>{{ talent.normal }}</p>
+                    <h4>Charged Attack</h4>
+                    <p>{{ talent.charged }}</p>
+                    <h4>Plunging Attack</h4>
+                    <p>{{ talent.plunging }}</p>
+                </div>
+           </div>
+           {% endif %}
+           {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+
+    </div>
+</div>
+{% endblock %}

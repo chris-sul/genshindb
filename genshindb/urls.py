@@ -22,6 +22,8 @@ from .characters.urls import urlpatterns as characters_urls
 
 admin.autodiscover()
 
+app_name = 'genshindb'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 

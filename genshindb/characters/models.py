@@ -16,7 +16,7 @@ class Character(models.Model):
     ]
 
     WEAPON_TYPES = [
-        ('bow', 'BOW'),
+        ('bow', 'Bow'),
         ('catalyst', 'Catalyst'),
         ('claymore', 'Claymore'),
         ('polearm', 'Polearm'),
@@ -30,3 +30,28 @@ class Character(models.Model):
     rarity = models.IntegerField()
     elemental_type = models.CharField(max_length=16, choices=ELEMENTAL_TYPES)
     weapon_type = models.CharField(max_length=16, choices=WEAPON_TYPES)
+
+    def __str__(self) -> str:
+        return self.name
+
+
+#####
+# Skill Talents
+#####
+
+class SkillTalent(models.Model):
+    name = models.CharField(max_length=16)
+    character = models.ForeignKey(Character, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class NormalAttack(SkillTalent):
+    # Attack descriptions
+    normal= models.CharField(max_length=256)
+    charged = models.CharField(max_length=256)
+    plunging = models.CharField(max_length=256)
+
+    # Attack values
+    values = models.JSONField(default=dict)

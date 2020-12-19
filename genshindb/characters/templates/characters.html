@@ -5,7 +5,7 @@
     active
 {% endblock %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Characters{% endblock %}
 
 {% block content %}
 <div class="card">
@@ -17,7 +17,9 @@
                     <div class="card">
                         <div class="row">
                             <div class="col-12">
-                                <img class="mx-auto d-block" src="{% static 'img/characters/'|add:character.name|add:'.png' %}">
+                                <a href="{% url 'character' character.name %}">
+                                    <img class="mx-auto d-block" src="{% static 'img/characters/'|add:character.name|add:'.png' %}">
+                                </a>
                             </div>
                         </div>
                         <div class="row">
