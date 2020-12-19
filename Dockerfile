@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN pip install --upgrade pip setuptools
+RUN python -m pip install --upgrade pip setuptools
 RUN pip install pipenv
 
 # install psycopg2
@@ -15,6 +15,8 @@ RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
     && apk add postgresql-dev \
     && pip install psycopg2 \
+    && apk add jpeg-dev zlib-dev libjpeg \
+    && pip install Pillow \
     && apk del build-deps
 
 

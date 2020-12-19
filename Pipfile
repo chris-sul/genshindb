@@ -9,6 +9,7 @@ Gunicorn = "==20.0.4"
 "djangorestframework" = "*"
 "django-environ" = "*"
 "django-bootstrap4" = "*"
+"django-markdownx" = "*"
 
 [requires]
 python_version = "3.7"

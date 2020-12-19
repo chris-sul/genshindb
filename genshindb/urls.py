@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import url
+from markdownx import urls as markdownx
 
 from genshindb import views
 
@@ -30,4 +32,5 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     path('characters/', include(characters_urls)),
+    url(r'^markdownx/', include(markdownx)),
 ]

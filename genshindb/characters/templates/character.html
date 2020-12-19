@@ -52,6 +52,50 @@
                                 </div>
                             </div>
                         {% endif %}
+                        {% if talent.typename == 'Elemental Skill' %}
+                        <div class="col-sm p-2">
+                            <div class="card item-card">
+                                <div class="container">
+                                    <h3 class="text-center">{{ talent.name }}</h3>
+                                    <h5 class="text-center text-secondary">(Elemental Skill)</h5>
+                                    {{ talent.formatted_markdown|safe}}
+                                    <br/>
+                                    <table class="table">
+                                        <tbody>
+                                            {% for key, value in talent.values.items %}
+                                            <tr>
+                                                <td>{{ key }}</td>
+                                                <td>{{ value }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if talent.typename == 'Elemental Burst' %}
+                        <div class="col-sm p-2">
+                            <div class="card item-card">
+                                <div class="container">
+                                    <h3 class="text-center">{{ talent.name }}</h3>
+                                    <h5 class="text-center text-secondary">(Elemental Burst)</h5>
+                                    {{ talent.formatted_markdown|safe}}
+                                    <br/>
+                                    <table class="table">
+                                        <tbody>
+                                            {% for key, value in talent.values.items %}
+                                            <tr>
+                                                <td>{{ key }}</td>
+                                                <td>{{ value }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>

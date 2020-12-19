@@ -1,4 +1,6 @@
 from django.db import models
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 
 # Create your models here.
 
@@ -54,4 +56,27 @@ class NormalAttack(SkillTalent):
     plunging = models.CharField(max_length=256)
 
     # Attack values
-    values = models.JSONField(default=dict)
+    values = models.JSONField(default=dict, blank=True)
+
+
+class ElementalSkill(SkillTalent):
+    text = MarkdownxField()
+
+    # Attack values
+    values = models.JSONField(default=dict, blank=True)
+
+    # Create a property that returns the markdown instead
+    @property
+    def formatted_markdown(self):
+        return markdownify(self.text)
+
+class ElementalBurst(SkillTalent):
+    text = MarkdownxField()
+
+    # Attack values
+    values = models.JSONField(default=dict, blank=True)
+
+    # Create a property that returns the markdown instead
+    @property
+    def formatted_markdown(self):
+        return markdownify(self.text)

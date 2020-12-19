@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DetailView
-from genshindb.characters.models import Character, SkillTalent, NormalAttack
+from genshindb.characters.models import Character, SkillTalent, NormalAttack, ElementalSkill, ElementalBurst
 
 
 def index(request):
@@ -24,6 +24,12 @@ class CharacterDetailView(DetailView):
             ctx['skilltalents'] = []
             for talent in NormalAttack.objects.filter(character=ctx['character']):
                 talent.typename = 'Normal Attack'
+                ctx['skilltalents'].append(talent)
+            for talent in ElementalSkill.objects.filter(character=ctx['character']):
+                talent.typename = 'Elemental Skill'
+                ctx['skilltalents'].append(talent)
+            for talent in ElementalBurst.objects.filter(character=ctx['character']):
+                talent.typename = 'Elemental Burst'
                 ctx['skilltalents'].append(talent)
         else:
             ctx['skilltalents'] = None
