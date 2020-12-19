@@ -10,28 +10,54 @@
 {% block content %}
 <div class="card bg-dark text-white">
     <div class="card-body">
-        <h2 class="card-title">{{ character }}</h2>
-        <img src="{% static 'img/characters/'|add:character.name|add:'.png' %}">
-        {% if skilltalents %}
-        <h2>Skill Talents</h2>
-        <div class="row">
-           {% for talent in skilltalents %}
-           {% if talent.typename == 'Normal Attack' %}
-           <div class="col-md-2 p-2">
-                <div class="card">
-                    <h3>{{ talent.name }}</h3>
-                    <h4>Normal Attack</h4>
-                    <p>{{ talent.normal }}</p>
-                    <h4>Charged Attack</h4>
-                    <p>{{ talent.charged }}</p>
-                    <h4>Plunging Attack</h4>
-                    <p>{{ talent.plunging }}</p>
+        <div class="container">
+            <div class ="item-card text-center">
+                <h2 class="card-title">{{ character }}</h2>
+                <img src="{% static 'img/characters/'|add:character.name|add:'.png' %}">
+                <p>{{ character.elemental_type.capitalize }} - {{ character.weapon_type.capitalize }}</p>
+            </div>
+
+            <h2>Description:</h2>
+            <p>{{ character.description }}</p>
+
+            {% if skilltalents %}
+            <h2>Skill Talents:</h2>
+            <div class="container">
+                <div class="row">
+                    {% for talent in skilltalents %}
+                        {% if talent.typename == 'Normal Attack' %}
+                            <div class="col-sm p-2">
+                                <div class="card item-card">
+                                    <div class="container">
+                                        <h3 class="text-center">{{ talent.name }}</h3>
+                                        <h5 class="text-center text-secondary">(Normal Attack)</h5>
+                                        <b>Normal Attack</b>
+                                        <p>{{ talent.normal }}</p>
+                                        <b>Charged Attack</b>
+                                        <p>{{ talent.charged }}</p>
+                                        <b>Plunging Attack</b>
+                                        <p>{{ talent.plunging }}</p>
+                                        <br/>
+                                        <table class="table">
+                                            <tbody>
+                                                {% for key, value in talent.values.items %}
+                                                <tr>
+                                                    <td>{{ key }}</td>
+                                                    <td>{{ value }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-           </div>
-           {% endif %}
-           {% endfor %}
+            </div>
+
+            {% endif %}
         </div>
-        {% endif %}
     </div>
     <div class="row">
 
