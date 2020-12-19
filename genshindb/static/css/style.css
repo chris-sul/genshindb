@@ -10,6 +10,7 @@ body {
   margin-bottom: 60px; /* Margin bottom by footer height */
   min-height: 75rem;
   padding-top: 4.5rem;
+  background-color: #25292e;
 }
 .footer {
   position: absolute;
@@ -25,3 +26,38 @@ body {
 }
 
 .top-buffer { margin-top:20px; }
+
+/* default styles so shuffle doesn't have to set them (it will if they're missing) */
+.my-shuffle {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Make vertical gutters the same as the horizontal ones */
+.character-item {
+  margin-bottom: 30px;
+}
+
+.aspect--16x9 {
+  padding-bottom: 56.25%;
+}
+
+.aspect--9x80 {
+  padding-bottom: calc(112.5% + 30px);
+}
+
+.aspect--32x9 {
+  padding-bottom: calc(28.125% - 8px);
+}
+
+.character-icon {
+  display: block;
+  width: 106px;
+  max-width: none;
+  height: 106px;
+  object-fit: cover;
+}
+
+.item-card {
+    background-color: #495059;
+}

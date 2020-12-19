@@ -8,13 +8,44 @@
 {% block title %}Characters{% endblock %}
 
 {% block content %}
-<div class="card">
+<div class="card bg-dark text-white">
     <div class="card-body">
-        <h2 class="card-title">Characters</h2>
-        <div class="row">
-            {% for character in characters %}
-                <div class="col-md-2 p-2">
-                    <div class="card">
+        <div class="container">
+            <h2 class="mb-3">Characters</h2>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-outline-primary active">
+                            <input type="radio" name="shuffle-filter" value="all" checked="checked"/>All
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            <input type="radio" name="shuffle-filter" value="anemo"/>Anemo
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            <input type="radio" name="shuffle-filter" value="cryo"/>Cyro
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            <input type="radio" name="shuffle-filter" value="electro"/>Electro
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            <input type="radio" name="shuffle-filter" value="dendro"/>Dendro
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            <input type="radio" name="shuffle-filter" value="geo"/>Geo
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            <input type="radio" name="shuffle-filter" value="hydro"/>Hydro
+                        </label>
+                        <label class="btn btn-outline-primary">
+                            <input type="radio" name="shuffle-filter" value="pyro"/>Pyro
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-shuffle">
+                {% for character in characters %}
+                <div class="character-item p-3" data-groups="[&quot;{{character.elemental_type}}&quot;]">
+                    <div class="item-card">
                         <div class="row">
                             <div class="col-12">
                                 <a href="{% url 'character' character.name %}">
@@ -23,15 +54,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-sm-auto">
                                 <div class="sidebar-content">{{ character.rarity }}<i class="fas fa-star"></i></div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-sm-auto">
                                 <div class="sidebar-content">
                                     <img src="{% static 'img/elements/'|add:character.elemental_type|add:'.png' %}" width="25" height="25" title="{{ character.elemental_type }}">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-sm-auto">
                                 <div class="sidebar-content">
                                     <img src="{% static 'img/weapons/'|add:character.weapon_type|add:'.png' %}" width="25" height="25" title="{{ character.weapon_type }}">
                                 </div>
@@ -39,11 +70,32 @@
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="row">
-
+                {% endfor %}
+            </div>
+        </div>        
     </div>
 </div>
+{% endblock %}
+
+{% block postbody %}
+    {{ block.super }}
+    <script>
+
+    var Shuffle = window.Shuffle;
+    var jQuery = window.jQuery;
+
+    var myShuffle = new Shuffle(document.querySelector('.my-shuffle'), {
+        itemSelector: '.character-item',
+        sizer: '.my-sizer-element',
+        buffer: 1,
+    });
+
+    jQuery('input[name="shuffle-filter"]').on('change', function (evt) {
+        var input = evt.currentTarget;
+        if (input.checked) {
+            myShuffle.filter(input.value);
+        }
+    });
+</script>
+
 {% endblock %}
