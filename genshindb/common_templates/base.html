@@ -27,7 +27,7 @@
         <div class="container">
             {% block navbar %}
             <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="{% static 'img/gdb_white.png' %}" width="30" height="30" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +65,7 @@
         </div>
 
         {% block footer %}
-            <footer class="footer text-muted">
+            <footer class="footer text-white bg-dark">
                 {% include "footer.html" %}
             </footer>
         {% endblock %}
