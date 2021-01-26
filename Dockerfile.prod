@@ -16,7 +16,7 @@ RUN apk update \
     && apk add postgresql-dev \
     && pip install psycopg2 \
     && apk add jpeg-dev zlib-dev libjpeg \
-    && pip install Pillow==8.1.0 \
+    && pip install Pillow \
     && apk del build-deps
 
 
