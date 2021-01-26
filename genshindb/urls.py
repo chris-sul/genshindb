@@ -16,13 +16,25 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import url
+from rest_framework import routers
 from markdownx import urls as markdownx
 
 from genshindb import views
 
+from .characters.views import CharacterViewSet, NormalAttackViewSet, ElementalSkillViewSet, \
+    ElementalBurstViewSet
+
+
 from .characters.urls import urlpatterns as characters_urls
 
 admin.autodiscover()
+
+# Api routers
+public_router = routers.DefaultRouter()
+public_router.register('characters', CharacterViewSet)
+public_router.register('normalattack', NormalAttackViewSet)
+public_router.register('elementalskill', ElementalSkillViewSet)
+public_router.register('elementalburst', ElementalBurstViewSet)
 
 app_name = 'genshindb'
 
@@ -33,4 +45,7 @@ urlpatterns = [
 
     path('characters/', include(characters_urls)),
     url(r'^markdownx/', include(markdownx)),
+
+    # API
+    path('api/v1/', include(public_router.urls)),
 ]
