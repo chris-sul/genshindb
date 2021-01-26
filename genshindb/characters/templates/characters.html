@@ -14,7 +14,7 @@
             <h2 class="mb-3">Characters</h2>
             <div class="row mb-3">
                 <div class="col">
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div class="btn-group btn-group-toggle" style="flex-wrap: wrap;" data-toggle="buttons">
                         <label class="btn btn-outline-primary active">
                             <input type="radio" name="shuffle-filter" value="all" checked="checked"/>All
                         </label>
@@ -53,7 +53,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row flex-nowrap">
                             <div class="col-sm-auto">
                                 <div class="sidebar-content">{{ character.rarity }}<i class="fas fa-star"></i></div>
                             </div>
@@ -86,7 +86,7 @@
 
     var myShuffle = new Shuffle(document.querySelector('.my-shuffle'), {
         itemSelector: '.character-item',
-        sizer: '.my-sizer-element',
+        sizer: '.p-3',
         buffer: 1,
     });
 
