@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout master
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Add environment variables to .env
         run: |
           echo DEBUG=0 >> .env
@@ -54,7 +54,7 @@ jobs:
     needs: build
     steps:
       - name: Checkout master
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Add environment variables to .env
         run: |
           echo DEBUG=0 >> .env
