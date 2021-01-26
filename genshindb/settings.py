@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'markdownx',
+    'rest_framework',
+    'django_filters',
 
     # Our apps
     'genshindb.characters',

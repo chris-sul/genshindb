@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DetailView
-from genshindb.characters.models import Character, SkillTalent, NormalAttack, ElementalSkill, ElementalBurst
+from rest_framework import viewsets, mixins
+from django_filters.rest_framework import DjangoFilterBackend
 
+from genshindb.characters.models import Character, SkillTalent, NormalAttack, ElementalSkill, ElementalBurst
+from genshindb.characters.serializers import CharacterSerializer, NormalAttackSerializer
 
 def index(request):
     ctx = {
@@ -34,3 +37,17 @@ class CharacterDetailView(DetailView):
         else:
             ctx['skilltalents'] = None
         return ctx
+
+
+# API
+class CharacterViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Character.objects.all()
+    serializer_class = CharacterSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('name', 'elemental_type', 'weapon_type', 'rarity',)
+
+class NormalAttackViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = NormalAttack.objects.all()
+    serializer_class = NormalAttackSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('name', 'character',)
