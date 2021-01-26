@@ -11,4 +11,26 @@ class CharacterSerializer(serializers.ModelSerializer):
 class NormalAttackSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = NormalAttack
-        fields = ['name', 'character', 'normal', 'charged', 'plunging']
+        fields = ['name', 'character', 'normal', 'charged', 'plunging', 'values']
+
+
+class ElementalSkillSerializer(serializers.HyperlinkedModelSerializer):
+    text = serializers.SerializerMethodField('markdown_text')
+
+    def markdown_text(self, val):
+        return val.text
+
+    class Meta:
+        model = NormalAttack
+        fields = ['name', 'character', 'text', 'values']
+
+
+class ElementalBurstSerializer(serializers.HyperlinkedModelSerializer):
+    text = serializers.SerializerMethodField('markdown_text')
+
+    def markdown_text(self, val):
+        return val.text
+
+    class Meta:
+        model = NormalAttack
+        fields = ['name', 'character', 'text', 'values']

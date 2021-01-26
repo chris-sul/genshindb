@@ -5,7 +5,8 @@ from rest_framework import viewsets, mixins
 from django_filters.rest_framework import DjangoFilterBackend
 
 from genshindb.characters.models import Character, SkillTalent, NormalAttack, ElementalSkill, ElementalBurst
-from genshindb.characters.serializers import CharacterSerializer, NormalAttackSerializer
+from genshindb.characters.serializers import CharacterSerializer, NormalAttackSerializer, ElementalSkillSerializer, \
+    ElementalBurstSerializer
 
 def index(request):
     ctx = {
@@ -49,5 +50,17 @@ class CharacterViewSet(viewsets.ReadOnlyModelViewSet):
 class NormalAttackViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = NormalAttack.objects.all()
     serializer_class = NormalAttackSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('name', 'character',)
+
+class ElementalSkillViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ElementalSkill.objects.all()
+    serializer_class = ElementalSkillSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filter_fields = ('name', 'character',)
+
+class ElementalBurstViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ElementalBurst.objects.all()
+    serializer_class = ElementalBurstSerializer
     filter_backends = (DjangoFilterBackend,)
     filter_fields = ('name', 'character',)

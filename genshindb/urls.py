@@ -21,7 +21,8 @@ from markdownx import urls as markdownx
 
 from genshindb import views
 
-from .characters.views import CharacterViewSet, NormalAttackViewSet
+from .characters.views import CharacterViewSet, NormalAttackViewSet, ElementalSkillViewSet, \
+    ElementalBurstViewSet
 
 
 from .characters.urls import urlpatterns as characters_urls
@@ -32,6 +33,8 @@ admin.autodiscover()
 public_router = routers.DefaultRouter()
 public_router.register('characters', CharacterViewSet)
 public_router.register('normalattack', NormalAttackViewSet)
+public_router.register('elementalskill', ElementalSkillViewSet)
+public_router.register('elementalburst', ElementalBurstViewSet)
 
 app_name = 'genshindb'
 
