@@ -42,7 +42,7 @@ class Character(models.Model):
 #####
 
 class SkillTalent(models.Model):
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=64)
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
