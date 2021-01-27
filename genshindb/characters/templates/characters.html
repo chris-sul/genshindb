@@ -45,7 +45,7 @@
             <div class="row my-shuffle">
                 {% for character in characters %}
                 <div class="character-item p-3" data-groups="[&quot;{{character.elemental_type}}&quot;]">
-                    <div class="item-card">
+                    <div class="item-card rounded">
                         <div class="row">
                             <div class="col-12">
                                 <a href="{% url 'character' character.name %}">
